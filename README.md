@@ -28,5 +28,5 @@ following skip the first 10 seconds `-ss 10` of the input and create a 5 second 
 
 Change as per your need
 ```bash
-ffmpeg -ss 10 -t 5 -i input.mp4 -vf "fps=30,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
+ffmpeg -i input.mp4 -vf "fps=5,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
 ```
