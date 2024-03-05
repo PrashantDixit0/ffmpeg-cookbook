@@ -36,3 +36,23 @@ change scale for relatively resizing gifs
 ```bash
 ffmpeg -i input.gif -vf "scale=iw*3/4:ih*3/4" resized_ot.gif
 ```
+
+### Watermark
+adjust watermark position
+
+**center** - overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2 <br>
+**top left** - overlay=(main_w-overlay_w):0<br>
+**bottom left** - overlay=0:(main_h-overlay_h)<br>
+**bottom right** - overlay=(main_w-overlay_w):(main_h-overlay_h)<br>
+
+following command overlays watermark in right bottom
+```bash
+ffmpeg -i /home/prashant/Downloads/wiki.mp4 -i /home/prashant/Downloads/icon.png -filter_complex "[1][0]scale2ref=oh*mdar:ih*0.1[logo][video];[video][logo]overlay=(main_w-overlay_w-20):(main_h-overlay_h-20)" output_scaled.mp4
+```
+
+add oppacity in watermark <br>
+`format=rgba,colorchannelmixer=aa=0.3`
+
+```bash
+ffmpeg -i input.mp4 -i watermark.png -filter_complex "[1]format=rgba,colorchannelmixer=aa=0.3[logo];[logo][0]scale2ref=oh*mdar:ih[logo][video];[video][logo]overlay=overlay=(main_w-overlay_w-20):(main_h-overlay_h-20)" output_center_cover_transparent.mp4
+```
