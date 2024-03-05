@@ -30,3 +30,9 @@ Change as per your need
 ```bash
 ffmpeg -i input.mp4 -vf "fps=5,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif
 ```
+
+### Resize GIFs
+change scale for relatively resizing gifs
+```bash
+ffmpeg -i input.gif -vf "scale=iw*3/4:ih*3/4" resized_ot.gif
+```
