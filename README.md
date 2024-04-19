@@ -60,7 +60,7 @@ ffmpeg -i $input_file.mp4 -i watermark.png -filter_complex "[1]format=rgba,color
 ### Remove Audio From Video
 You can remove audio by using the `-an` flag
 ```bash 
-ffmpeg -i $input_file -c copy -an $output_file
+ffmpeg -f lavfi -i anullsrc -i $input_file.mp4 -c:v copy -c:a aac -map 0:a -map 1:v -shortest $output_file.mp4
 ```
 
 ### Add Audio to Video
