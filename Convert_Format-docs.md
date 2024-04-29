@@ -1,4 +1,4 @@
-# CLI Commands
+# CLI Commands to change media file from one to another
 
 ### Convert webp to mp4 format
 ```bash
